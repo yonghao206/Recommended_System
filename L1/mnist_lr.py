@@ -5,6 +5,8 @@ from sklearn import preprocessing
 from sklearn.metrics import accuracy_score
 from sklearn.datasets import load_digits
 from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+
 import matplotlib.pyplot as plt
 
 # 加载数据
@@ -34,3 +36,9 @@ lr = LogisticRegression()
 lr.fit(train_ss_x, train_y)
 predict_y=lr.predict(test_ss_x)
 print('LR准确率: %0.4lf' % accuracy_score(predict_y, test_y))
+
+# 采用树分类进行预测
+clf_tree = DecisionTreeClassifier(random_state=5)
+clf_tree.fit(train_ss_x, train_y)
+predict_y_tree = clf_tree.predict(test_ss_x)
+print('Tree准确率: %0.4lf' % accuracy_score(predict_y_tree, test_y))
